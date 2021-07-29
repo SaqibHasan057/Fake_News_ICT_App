@@ -1,0 +1,257 @@
+{% extends "./public/base.html" %}
+{% load static %}
+
+{% block main_content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="card h-100">
+            <a href="https://www.bbc.com/bengali">
+            <img class="logo" src="{% static "assets/img/unnamed.jpg" %}" alt="Avatar" style="width:100%">
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="card h-100">
+            <a href="https://edition.cnn.com/">
+            <img class="logo" src="{% static "assets/img/cnn.png" %}" alt="Avatar" style="width:100%">
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="card h-100">
+            <a href="https://www.thedailystar.net/">
+            <img class="logo" src="{% static "assets/img/dailyStar.png" %}" alt="Avatar" style="width:100%">
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="card h-100" >
+            <a href="https://www.prothomalo.com/">
+            <img class="logo" src="{% static "assets/img/prothomAlo.jpg" %}" alt="Avatar" style="width:100%">
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+
+      <!--Google Trends row-->
+      <div class="row">
+          <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2431_RC04/embed_loader.js"></script>
+          <div class="col-lg-6">
+            <script type="text/javascript"> trends.embed.renderExploreWidget("GEO_MAP", {"comparisonItem":[{"keyword":"fake news","geo":"","time":"2004-01-01 2021-04-23"}],"category":0,"property":""}, {"exploreQuery":"date=all&q=fake%20news","guestPath":"https://trends.google.com:443/trends/embed/"}); </script>
+          </div>
+          <div class="col-lg-6">
+            <script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"fake news","geo":"","time":"2004-01-01 2021-04-23"}],"category":0,"property":""}, {"exploreQuery":"date=all&q=fake%20news","guestPath":"https://trends.google.com:443/trends/embed/"}); </script>
+          </div>
+      </div>
+
+
+
+
+      <!--Latest news row-->
+
+      <script type="text/javascript" >
+        console.log("Hello World!!");
+        $.ajax({
+                    url: "{% url 'newsapi' %}",
+                    type: 'GET',
+                    success: function (data) {
+                            console.log(data)
+                            for(i=1;i<=4;i++){
+                                $('#img'+i).empty();
+                                $('#title'+i).empty();
+                                $('#para'+i).empty();
+                                $('#url'+i).empty();
+                            }
+
+                            for(i=1;i<=8;i++){
+                                res = data[i-1]
+                                $('#img'+i).attr("src",data[i-1]["image"]);
+                                $('#title'+i).text(data[i-1]["title"]+"("+data[i-1]["source"]+")");
+                                $('#para'+i).text(data[i-1]["description"]);
+                                $('#url'+i).attr("href",data[i-1]["url"]);
+                                $('#url'+i).text("Link");
+                            }
+                    }
+                });
+      </script>
+
+      <style>
+        .logo {
+        width:  auto;
+        height: 125px;
+        }
+        .card {
+          box-shadow: 5px 5px 5px 5px rgba(100, 100, 100, 0.26);
+          margin: 5px;
+        }
+        .card-header{
+          font-size: 125%;
+          font-weight: bold;
+        }
+      </style>
+
+      <div class = "row">
+        <div class="col-lg-3 align-items-end">
+          <div class="card">
+            <img class="card-img-top"  alt="Card image" style="width:100%" id="img1">
+            <div class="card-header" id="title1" style="h4">
+            </div>
+            <div class="card-body">
+              <p class="card-text" id="para1"></p>
+            </div>
+            <a href="" id="url1">Link</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 align-items-end">
+          <div class="card" >
+            <img class="card-img-top"  alt="Card image" style="width:100%" id="img2">
+            <div class="card-header" id="title2" style="h4">
+            </div>
+            <div class="card-body">
+              <p class="card-text" id="para2"></p>
+            </div>
+            <a href="" id="url2">Link</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 align-items-end">
+          <div class="card" >
+            <img class="card-img-top"  alt="Card image" style="width:100%" id="img3">
+            <div class="card-header" id="title3" style="h4">
+            </div>
+            <div class="card-body">
+              <p class="card-text" id="para3"></p>
+            </div>
+            <a href="" id="url3">Link</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 align-items-end">
+          <div class="card" >
+            <img class="card-img-top"  alt="Card image" style="width:100%" id="img4">
+            <div class="card-header" id="title4" style="h4">
+            </div>
+            <div class="card-body">
+              <p class="card-text" id="para4"></p>
+            </div>
+            <a href="" id="url4">Link</a>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+      <div class = "row">
+        <div class="col-lg-3 align-items-end">
+          <div class="card" >
+            <img class="card-img-top"  alt="Card image" style="width:100%" id="img5">
+            <div class="card-header" id="title5" style="h4">
+            </div>
+            <div class="card-body">
+              <p class="card-text" id="para5"></p>
+            </div>
+            <a href="" id="url5">Link</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 align-items-end">
+          <div class="card" >
+            <img class="card-img-top"  alt="Card image" style="width:100%" id="img6">
+            <div class="card-header" id="title6" style="h4">
+            </div>
+            <div class="card-body">
+              <p class="card-text" id="para6"></p>
+            </div>
+            <a href="" id="url6">Link</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 align-items-end">
+          <div class="card" >
+            <img class="card-img-top"  alt="Card image" style="width:100%" id="img7">
+            <div class="card-header" id="title7" style="h4">
+            </div>
+            <div class="card-body">
+              <p class="card-text" id="para7"></p>
+            </div>
+            <a href="" id="url7">Link</a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 align-items-end">
+          <div class="card" >
+            <img class="card-img-top"  alt="Card image" style="width:100%" id="img8">
+            <div class="card-header" id="title8" style="h4">
+            </div>
+            <div class="card-body">
+              <p class="card-text" id="para8"></p>
+            </div>
+            <a href="" id="url8">Link</a>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </section>
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+{% endblock %}

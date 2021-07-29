@@ -1,0 +1,4 @@
+.idea/
+__pycache__/
+*.pyc
+fake_news_app/library/models/

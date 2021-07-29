@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+{% include 'fake_news_app/public/head.html' %}
+{% include 'fake_news_app/public/scripts.html' %}
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div id="wrapper">
+        {% include 'fake_news_app/public/header.html' %}
+        {% include 'fake_news_app/public/left_side_bar.html' %}
+
+        {% block main_content %}
+
+        {% endblock %}
+        {% include 'fake_news_app/public/footer.html' %}
+        {% include 'fake_news_app/public/control_sidebar.html' %}
+    </div>
+{% block script %}
+
+{% endblock %}
+
+</body>
+
+</html>

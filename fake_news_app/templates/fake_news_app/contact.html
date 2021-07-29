@@ -1,0 +1,63 @@
+{% extends "./public/base.html" %}
+{% load static %}
+
+{% block main_content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Contact
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="{% url 'home' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Contact</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+            <div class="text-center animated fadeInRightBig">
+                <img  src="{% static "assets/img/adnanSir.jpg" %}" class="img-thumbnail" style="border-radius:50%;">
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                        <h4><strong>Dr. Muhammad Abdullah Adnan</strong></h4>
+                        <h5><strong>Assistant Professor</strong></h5>
+                        <strong>Address: </strong><br>
+                        Room No: 311<br>
+                        Department of Computer Science and Engineering<br>
+                        Bangladesh University of Engineering and Technology<br>
+                        Dhaka 1000, Bangladesh<br>
+                        <strong>Email: </strong><br>
+                        abdullah.adnan@gmail.com, adnan@cse.buet.ac.bd
+                        <br>
+                        <strong>Telephone: </strong><br>
+                        Office: 880 2 9665650/7109<br>
+                        Cell: 880 1552336926<br>
+                        Residence: 880 2 9665650/7423<br>
+                        <br>
+                        <a href="https://sites.google.com/site/abdullahadnan">Visit my page.</a><br>
+                    </p>
+                    </div>
+                    </div>
+                    <div class="col-lg-4"></div>
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+{% endblock %}
