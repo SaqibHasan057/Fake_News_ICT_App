@@ -145,10 +145,17 @@ def classify_data(dataset,news):
         #print(score)
 
         classification = None
-        if(score>=0.5):
-            classification = "FAKE"
+
+        if(dataset=="BanFakeNews"):
+            if(score>=0.5):
+                classification = "REAL"
+            else:
+                classification = "FAKE"
         else:
-            classification = "REAL"
+            if (score >= 0.5):
+                classification = "FAKE"
+            else:
+                classification = "REAL"
 
         # Result[model]=[classification,endTime-startTime]
         print(model,"done!!")
